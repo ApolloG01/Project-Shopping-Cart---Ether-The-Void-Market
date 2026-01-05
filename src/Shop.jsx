@@ -1,49 +1,49 @@
-// src/Shop.jsx
-import { products } from './data/products';
-import { Link } from 'react-router-dom';
+import { products } from "./data/products";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
-function Shop() {
+function Shop({ dispatch, items }) {
   return (
     <div className="p-10">
       <h1 className="mb-12 text-center text-3xl font-light tracking-widest uppercase">
-        Current Abstractions
+        Our Abstractions
       </h1>
 
-      <div className="mx-auto grid max-w-6xl grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3">
+      {/* The Grid Container */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-10 max-w-7xl mx-auto">
         {products.map((product) => (
-          <div
-            key={product.id}
-            className="group border border-zinc-800 bg-zinc-900/30 p-6 transition-all duration-500 hover:bg-zinc-900/60"
-          >
-            {/* Image Area */}
-            <div className="mb-6 aspect-square overflow-hidden bg-zinc-800">
-              <img
-                src={product.image}
-                alt={product.name}
-                className="h-full w-full object-cover opacity-60 grayscale transition-all duration-700 group-hover:scale-110 group-hover:opacity-100 group-hover:grayscale-0"
-              />
-            </div>
+          <div key={product.id} className="group cursor-pointer">
+            <Link to={`/shop/${product.id}`}>
+              <div className="relative bg-zinc-900 aspect-3/4 mb-4">
+                <motion.img
+                  layoutId={`product-img-${product.id}`}
+                  src={product.image}
+                  alt={product.name}
+                  className="w-full h-full object-cover ..."
+                />
+                <div className="absolute inset-0 bg-linear-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                  <span className="text-white uppercase tracking-widest text-xs border border-white px-4 py-2 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
+                    Feel it
+                  </span>
+                </div>
+              </div>
+            </Link>
 
-            {/* Content Area */}
-            <h2 className="mb-2 text-xl font-bold tracking-tight">
+            <h3 className="text-xl tracking-tighter uppercase font-bold text-zinc-200">
               {product.name}
-            </h2>
-            <p className="mb-4 line-clamp-2 h-12 text-sm text-zinc-500">
-              {product.description}
-            </p>
+            </h3>
 
-            <div className="flex items-center justify-between border-t border-zinc-800 pt-4">
-              <span className="font-mono text-sm text-zinc-400">
-                {product.price} <span className="text-[10px]">FRAGMENTS</span>
-              </span>
-
-              {/* Dynamic Link to the Product Detail page */}
-              <Link
-                to={`/shop/${product.id}`}
-                className="border border-zinc-700 px-4 py-2 text-[10px] tracking-[0.2em] uppercase transition-all hover:bg-white hover:text-black"
+            <div className="flex items-center justify-between mt-1">
+              <p className="text-zinc-500 text-sm">{product.price} Atoms</p>
+              <button
+                className="border border-zinc-700 text-zinc-400 px-4 py-1 text-[10px] uppercase tracking-[0.2em] hover:bg-white hover:text-black transition-all duration-300"
+                onClick={() => {
+                  console.log(product.id);
+                  dispatch({ type: "add", payload: product });
+                }}
               >
-                Observe
-              </Link>
+                Add to cart
+              </button>
             </div>
           </div>
         ))}
