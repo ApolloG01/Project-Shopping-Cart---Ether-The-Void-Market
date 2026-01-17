@@ -1,16 +1,78 @@
-# React + Vite
+# Ether - The Void Market 🌌
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An E-commerce selling abstractions. Shopping cart application built with React, showcasing the wonders of the void.
 
-Currently, two official plugins are available:
+## 🚀 Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+[View Live Site](https://ApolloG01.github.io/Project-Shopping-Cart---Ether-The-Void-Market/)
 
-## React Compiler
+## 🛠️ Built With
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **React** - UI library
+- **React Router** - Navigation and routing
+- **Tailwind CSS** - Styling
+- **Vite** - Build tool
+- **Framer Motion** - Animations
 
-## Expanding the ESLint configuration
+## ✨ Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Browse mystical products from across the void
+- Add/remove items from shopping cart
+- Real-time cart count in navigation
+- Responsive design (mobile-friendly)
+- Product detail pages
+- Smooth page transitions
+
+## 🧠 Learning Goals
+
+This project was built to practice:
+- React Router (navigation, dynamic routes, URL parameters)
+- Context API (state management)
+- Component composition
+- Responsive design
+- Git workflow and GitHub Pages deployment
+
+## 📦 Installation
+```bash
+# Clone the repository
+git clone https://github.com/ApolloG01/Project-Shopping-Cart---Ether-The-Void-Market.git
+
+# Navigate to project directory
+cd Project-Shopping-Cart---Ether-The-Void-Market
+
+# Install dependencies
+npm install
+
+# Run development server
+npm run dev
+```
+
+## 🚢 Deployment
+```bash
+# Build and deploy to GitHub Pages
+npm run deploy
+```
+
+## 📝 What I Learned
+
+- Managing global state with Context API
+- Implementing shopping cart logic (add, remove, update quantities)
+- Working with React Router for multi-page apps
+- Creating responsive navigation with mobile hamburger menu
+- Deploying React apps to GitHub Pages
+
+## 🎯 Future Improvements
+
+- [ ] Add local storage persistence
+- [ ] Implement product search/filter
+- [ ] Add checkout flow
+- [ ] Product categories
+- [ ] TypeScript conversion
+
+## 👨‍💻 Author
+
+**ApolloG01**
+
+---
+
+*This project is part of my React learning journey.
