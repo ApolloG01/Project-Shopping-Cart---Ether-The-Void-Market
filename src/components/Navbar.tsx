@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
+import { InitialStateI } from "../types/types";
 
-function Navbar({ totalItems }) {
+function Navbar({ totalItems }:InitialStateI) {
   const [isOpen, setIsOpen] = useState(false);
   
   const navLinkStyles = ({ isActive }) =>

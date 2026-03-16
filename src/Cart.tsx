@@ -1,14 +1,13 @@
 import { Link } from "react-router-dom";
-import { useState } from "react"; // Add useState
+import { useState } from "react"; 
+import { CartPropsI } from "./types/types";
 
-function Cart({ items, totalItems, dispatch }) {
+function Cart({ items, totalItems, dispatch }:CartPropsI) {
   const [isCheckingOut, setIsCheckingOut] = useState(false);
 
-  const totalPrice = items.reduce((acc, item) => {
+  const totalPrice = items.reduce((acc, item):number => {
     const price =
-      typeof item.price === "string"
-        ? parseFloat(item.price.replace(/[^0-9.]/g, ""))
-        : Number(item.price);
+ Number(item.price);
     const qty = Number(item.quantity) || 0;
     return acc + price * qty;
   }, 0);
@@ -87,7 +86,7 @@ function Cart({ items, totalItems, dispatch }) {
               className="w-24 h-32 object-cover grayscale"
             />
 
-            <div className="flex-grow">
+            <div className="grow">
               <h3 className="uppercase tracking-widest text-sm">{item.name}</h3>
               <p className="text-zinc-500 font-mono text-xs mt-1">
                 {item.price} Atoms
@@ -96,7 +95,7 @@ function Cart({ items, totalItems, dispatch }) {
 
             <div className="flex items-center gap-4">
               <button
-                onClick={() => dispatch({ type: "decrease", payload: item })}
+                onClick={() => dispatch({ type: "decrease", payload: { id: item.id } })}
                 className="w-8 h-8 border border-zinc-800 hover:bg-white hover:text-black transition-colors"
               >
                 -
@@ -105,7 +104,7 @@ function Cart({ items, totalItems, dispatch }) {
                 {item.quantity}
               </span>
               <button
-                onClick={() => dispatch({ type: "increase", payload: item })}
+                onClick={() => dispatch({ type: "increase", payload: { id: item.id } })}
                 className="w-8 h-8 border border-zinc-800 hover:bg-white hover:text-black transition-colors"
               >
                 +
@@ -113,7 +112,7 @@ function Cart({ items, totalItems, dispatch }) {
             </div>
 
             <button
-              onClick={() => dispatch({ type: "remove", payload: item })}
+              onClick={() => dispatch({ type: "remove", payload: { id: item.id } })}
               className="text-zinc-600 hover:text-red-500 transition-colors uppercase text-[10px] tracking-widest"
             >
               Remove

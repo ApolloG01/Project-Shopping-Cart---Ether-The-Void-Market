@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { useReducer, useEffect } from "react"; // Added useEffect here
+import { useReducer, useEffect } from "react"; 
 import Navbar from "./components/Navbar";
 import Home from "./Home";
 import Shop from "./Shop";
@@ -8,13 +8,14 @@ import ContactUs from "./ContactUs";
 import Cart from "./Cart";
 import ProductDetail from "./ProductDetail";
 import PageNotFound from "./PageNotFound";
+import { InitialStateI, CartAction, CartReducer } from "./types/types";
 
-const initialState = {
+const initialState:InitialStateI = {
   items: [],
-  totalItems: 0,
+  totalItems: 0 ,
 };
 
-function reducer(state, action) {
+function reducer(state: InitialStateI, action: CartAction): InitialStateI {
   switch (action.type) {
     case "add": {
       const addedQty = action.payload.quantity || 1;
@@ -86,16 +87,24 @@ function reducer(state, action) {
     case "clear":
       return initialState;
 
+    case "load":
+      return action.payload;
+
     default:
       return state;
   }
 }
 
 function App() {
-  const [state, dispatch] = useReducer(reducer, initialState, (initial) => {
-    const saved = localStorage.getItem("ether-cart");
-    return saved ? JSON.parse(saved) : initial;
-  });
+const [state, dispatch] = useReducer<InitialStateI, [CartAction]>(reducer, initialState);
+
+// Then, in useEffect:
+useEffect(() => {
+  const saved = localStorage.getItem("ether-cart");
+  if (saved) {
+    dispatch({ type: "load", payload: JSON.parse(saved) }); reducer
+  }
+}, []);
 
   const { items, totalItems } = state;
 
