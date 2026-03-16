@@ -9,10 +9,12 @@ An E-commerce selling abstractions. Shopping cart application built with React, 
 ## 🛠️ Built With
 
 - **React** - UI library
+- **TypeScript** - Type safety and better developer experience
 - **React Router** - Navigation and routing
 - **Tailwind CSS** - Styling
 - **Vite** - Build tool
 - **Framer Motion** - Animations
+
 
 ## ✨ Features
 
@@ -60,6 +62,8 @@ npm run deploy
 - Working with React Router for multi-page apps
 - Creating responsive navigation with mobile hamburger menu
 - Deploying React apps to GitHub Pages
+- TypeScript fundamentals (type definitions, interfaces, type safety)
+- Converting JavaScript React app to TypeScript
 
 ## 🎯 Future Improvements
 
@@ -67,7 +71,7 @@ npm run deploy
 - [ ] Implement product search/filter
 - [ ] Add checkout flow
 - [ ] Product categories
-- [ ] TypeScript conversion
+- [x] TypeScript conversion
 
 ## 👨‍💻 Author
 
